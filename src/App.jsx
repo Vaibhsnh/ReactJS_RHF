@@ -1,15 +1,22 @@
-import React from 'react'
-import Navbar from './components/navbar'
-import Form from './components/form'
-import UserCards from './components/UserCards'
+import React from "react";
+import Navbar from "./components/navbar";
+import Form from "./components/form";
+import UserCards from "./components/UserCards";
+
 const App = () => {
   return (
-    <div className="h-screen w-full bg-gray-950 flex flex-col items-center gap-20">
-      <Navbar />
-      {/* <Form /> */}
-      <UserCards/>
-    </div>
-  )
-}
+    <div className="h-screen w-full bg-gray-950">
+      <div>
+        <Navbar />
+      </div>
 
-export default App
+      <div className="h-[calc(100vh-5rem)] flex items-center justify-center"><Form /></div>
+
+      <div className="h-[calc(100vh-5rem)] bg-amber-300 p-5">
+        <UserCards />
+      </div>
+    </div>
+  );
+};
+
+export default App;

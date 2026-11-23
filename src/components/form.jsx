@@ -1,20 +1,25 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const form = () => {
+const form = ({ setToggle, setUsers }) => {
   let {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    mode: "onChange",
+  });
   console.log("errors->", errors);
+
   return (
-    <div className="text-white text-lg border-2 rounded-2xl w-100 ">
+    <div className="text-white text-lg border-2 rounded-2xl w-100 bg-blue-950">
       <form
         onSubmit={handleSubmit((data) => {
+          setUsers((prev)=>[...prev, data]);
           console.log(data);
           reset();
+          setToggle((prev) => !prev);
         })}
         className="flex flex-col gap-3 p-5 font-semibold"
       >
@@ -39,10 +44,10 @@ const form = () => {
           <input
             {...register("email", {
               required: "Email is required.",
-              pattern:{
-                value:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message:"Please enter a valid email."
-              }
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "Please enter a valid email.",
+              },
             })}
             type="email"
             id="email"

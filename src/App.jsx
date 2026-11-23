@@ -5,19 +5,24 @@ import UserCards from "./components/UserCards";
 
 const App = () => {
   const [toggle, setToggle] = useState(false);
+  const [users, setUsers] = useState([])
   return (
-    <div className="h-screen w-full bg-gray-800">
+    <div className="h-screen w-full bg-amber-300">
       <div>
-        <Navbar  setToggle={setToggle}/>
+        <Navbar setToggle={setToggle}/>
       </div>
 
       {toggle ? (
         <div className="h-[calc(100vh-5rem)] flex items-center justify-center">
-          <Form />
+          <Form setUsers={setUsers} setToggle={setToggle}/>
         </div>
       ) : (
-        <div className="h-[calc(100vh-5rem)] bg-amber-300 p-5">
-          <UserCards />
+        <div className="p-5 flex gap-4">
+          {
+            users.map((elem)=>{
+              return <UserCards user={elem}/>
+            })
+          }
         </div>
       )}
     </div>

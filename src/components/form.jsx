@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
 
-const form = ({ setToggle, setUsers, users, updatedData}) => {
+const form = ({ setToggle, setUsers, users, updatedData, setUpdatedData}) => {
   let {
     register,
     handleSubmit,
@@ -18,11 +18,20 @@ const form = ({ setToggle, setUsers, users, updatedData}) => {
     <div className="text-white text-lg border-2 rounded-2xl w-100 bg-blue-950">
       <form
         onSubmit={handleSubmit((data) => {
-          let updatedUsers = [...users, {...data, id: nanoid()}]
+          let updatedUsers;
+          if(updatedData){
+            updatedUsers = users.map((val)=>{
+              return val.id === updatedData.id ? {...val, ...data}:val;
+            });
+          }else{
+            updatedUsers = [...users, {...data, id: nanoid()}];
+          }
+
           setUsers(updatedUsers);
           localStorage.setItem("newUsers", JSON.stringify(updatedUsers))
           console.log(data);
           reset();
+          setUpdatedData(null);
           setToggle((prev) => !prev);
         })}
         className="flex flex-col gap-3 p-5 font-semibold"

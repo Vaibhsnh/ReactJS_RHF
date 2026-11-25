@@ -31,6 +31,7 @@ const App = () => {
       {toggle ? (
         <div className="h-[calc(100vh-5rem)] flex items-center justify-center">
           <Form
+          setUpdatedData={setUpdatedData}
             setUsers={setUsers}
             setToggle={setToggle}
             users={users}

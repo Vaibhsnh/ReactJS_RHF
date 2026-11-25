@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
 
-const form = ({ setToggle, setUsers, users}) => {
+const form = ({ setToggle, setUsers, users, updatedData}) => {
   let {
     register,
     handleSubmit,
@@ -10,6 +10,7 @@ const form = ({ setToggle, setUsers, users}) => {
     formState: { errors },
   } = useForm({
     mode: "onChange",
+    defaultValues:updatedData
   });
   console.log("errors->", errors);
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserCards = ({ user, setToggle, handleDelete}) => {
+const UserCards = ({ user, setToggle, handleDelete, setUpdatedData}) => {
   return (
     <div className="text-white p-3 w-70 border-2 rounded-xl font-mono flex flex-col gap-4 bg-amber-400">
       <div>
@@ -19,7 +19,9 @@ const UserCards = ({ user, setToggle, handleDelete}) => {
 
       <div className="flex justify-between">
         <button
-          onClick={() => setToggle((prev) => !prev)}
+          onClick={() => {
+            setUpdatedData(user);
+            setToggle((prev) => !prev)}}
           className="bg-green-600 border-0 rounded px-8 py-2 cursor-pointer"
         >
           UPDATE

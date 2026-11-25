@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { nanoid } from "nanoid";
 
 const form = ({ setToggle, setUsers, users}) => {
   let {
@@ -16,7 +17,7 @@ const form = ({ setToggle, setUsers, users}) => {
     <div className="text-white text-lg border-2 rounded-2xl w-100 bg-blue-950">
       <form
         onSubmit={handleSubmit((data) => {
-          let updatedUsers = [...users, data]
+          let updatedUsers = [...users, {...data, id: nanoid()}]
           setUsers(updatedUsers);
           localStorage.setItem("newUsers", JSON.stringify(updatedUsers))
           console.log(data);

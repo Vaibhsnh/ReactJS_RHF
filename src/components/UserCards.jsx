@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserCards = ({ user, setToggle, handleDelete }) => {
+const UserCards = ({ user, setToggle, handleDelete}) => {
   return (
     <div className="text-white p-3 w-70 border-2 rounded-xl font-mono flex flex-col gap-4 bg-amber-400">
       <div>
@@ -24,9 +24,12 @@ const UserCards = ({ user, setToggle, handleDelete }) => {
         >
           UPDATE
         </button>
-        <button 
-        onClick={()=>{handleDelete(user.id)        }}
-        className="bg-red-600 border-0 rounded px-8 py-2 cursor-pointer">
+        <button
+          onClick={() => {
+            handleDelete(user.id);
+          }}
+          className="bg-red-600 border-0 rounded px-8 py-2 cursor-pointer"
+        >
           DELETE
         </button>
       </div>
